@@ -1,0 +1,144 @@
+.page {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-area {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* 두 로고를 같은 자리에 겹쳐 놓는 영역 */
+.logo-stack {
+  --logo-w: 15vw;
+  display: grid;
+  place-items: center;
+}
+
+.logo-stack > * {
+  grid-area: 1 / 1;
+}
+
+/* 1번 로고 */
+.logo {
+  width: var(--logo-w);
+  height: auto;
+  transition:
+    opacity 0.9s ease-in-out,
+    transform 0.9s ease-in-out;
+}
+
+/* 2번 로고 (처음엔 숨김) */
+.logo-full {
+  width: calc(var(--logo-w) * 0.7);
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.9s ease-in-out;
+}
+
+/* 전환 시: 1번은 아이콘 크기·위치를 2번에 맞춰 줄어들며 사라지고, 2번은 나타남 */
+.logo-stack.swapped .logo {
+  opacity: 0;
+  transform: translateY(calc(var(--logo-w) * -0.086)) scale(0.43);
+}
+
+.logo-stack.swapped .logo-full {
+  opacity: 1;
+}
+
+.pen {
+  stroke-dasharray: 1 2;
+  stroke-dashoffset: 1.02;
+  animation: drawPen 4.5s ease-in-out forwards;
+}
+
+@keyframes drawPen {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* 가운데 소개 영역: 위(로고)와 아래(contact) 사이를 정확히 채움 */
+.introduce {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: var(--logo-h);
+  bottom: var(--contact-h);
+  box-sizing: border-box;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: gray;
+
+  p {
+    max-width: 560px;
+    margin: 0 0 1.2em;
+    font-size: 15px;
+    line-height: 1.9;
+    word-break: keep-all;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.contact {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--contact-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #444;
+
+  h1 {
+    font-size: 16px;
+  }
+
+  a {
+    text-decoration: none;
+    color: gray;
+  }
+}
+
+@media (max-width: 1024px) {
+  .logo-stack {
+    --logo-w: 50vw;
+  }
+  
+  .logo {
+    width: var(--logo-w);
+    max-height: 90%;
+    height: auto;
+  }
+
+  .logo-full {
+    width: calc(var(--logo-w) * 0.7);
+  }
+
+  /* 소개·Contact 영역을 함께 위로 올림 */
+  .introduce {
+    top: calc(var(--logo-h) - var(--mobile-lift-introduce));
+    bottom: calc(var(--contact-h) + var(--mobile-lift-introduce));
+  }
+  
+  .contact {
+    bottom: var(--mobile-lift-contact);
+  }
+}
