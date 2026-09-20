@@ -1,9 +1,15 @@
+html {
+  scroll-snap-type: y mandatory;
+  scrollbar-gutter: stable;
+}
+
 .page {
   position: relative;
   height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  scroll-snap-align: start;
 }
 
 .logo-area {
@@ -117,6 +123,46 @@
   }
 }
 
+/* 아래로 스크롤 유도 아이콘 */
+.scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 4vh;
+  transform: translateX(-50%);
+  z-index: 3;
+  padding: 10px 14px;
+  border: 0;
+  background: none;
+  color: #777;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  animation: hintPulse 2s ease-in-out infinite;
+}
+
+.scroll-hint svg {
+  display: block;
+}
+
+.scroll-hint:hover {
+  animation: none;
+  opacity: 0.85;
+}
+
+.scroll-hint:focus-visible {
+  outline: 1px solid #aaa;
+  border-radius: 8px;
+}
+
+@keyframes hintPulse {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
 @media (max-width: 1024px) {
   .logo-stack {
     --logo-w: 50vw;
@@ -140,5 +186,9 @@
   
   .contact {
     bottom: var(--mobile-lift-contact);
+  }
+
+  .scroll-hint {
+    bottom: var(--mobile-lift-hint);
   }
 }
