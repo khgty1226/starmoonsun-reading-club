@@ -36,8 +36,8 @@ const validate = (f) => {
   if (!f.gender) e.gender = "성별을 선택해 주세요.";
   const age = Number(f.age);
   if (!f.age) e.age = "나이를 입력해 주세요.";
-  else if (!Number.isInteger(age) || age < 20 || age > 29)
-    e.age = "이번 이벤트는 20~29세만 참여할 수 있어요.";
+  else if (!Number.isInteger(age) || age < 1)
+    e.age = "나이를 숫자로 입력해 주세요.";
   if (!f.instagram.replace(/^@/, ""))
     e.instagram = "인스타그램 아이디를 입력해 주세요.";
   else if (!/^[A-Za-z0-9._]{1,30}$/.test(f.instagram.replace(/^@/, "")))
@@ -212,7 +212,7 @@ function OpenEvent() {
                 </div>
                 <div>
                   <dt>참여 대상</dt>
-                  <dd>대전에 사는 20~29세</dd>
+                  <dd>대전에 사는 누구나</dd>
                 </div>
                 <div>
                   <dt>선물</dt>

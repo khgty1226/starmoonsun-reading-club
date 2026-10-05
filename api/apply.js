@@ -30,8 +30,8 @@ function validate(body) {
 
   if (data.name.length < 2) return [null, "이름을 확인해 주세요."];
   if (!GENDER[data.gender]) return [null, "성별을 선택해 주세요."];
-  if (!Number.isInteger(data.age) || data.age < 20 || data.age > 29)
-    return [null, "20~29세만 참여할 수 있어요."];
+  if (!Number.isInteger(data.age) || data.age < 1 || data.age > 99)
+    return [null, "나이를 확인해 주세요."];
   if (!/^[A-Za-z0-9._]{1,30}$/.test(data.instagram))
     return [null, "인스타그램 아이디를 확인해 주세요."];
   if (!/^01[016789]-\d{3,4}-\d{4}$/.test(data.phone))
