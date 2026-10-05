@@ -1,0 +1,438 @@
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap");
+
+/* 오픈 이벤트 참여 신청서. 색은 로고의 크레용 색에서 가져왔습니다 */
+.oe-page {
+  --ink: #2b2b2b;
+  --graphite: #808080;
+  --line: #dcdcdc;
+  --paper: #fcfcfc;
+  --star: #f2df3a;
+  --moon: #f2be45;
+  --sun: #e8636b;
+  --serif: "Gowun Batang", "Nanum Myeongjo", serif;
+
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+  box-sizing: border-box;
+  text-align: left;
+  color: var(--ink);
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.oe-page *,
+.oe-page *::before,
+.oe-page *::after {
+  box-sizing: border-box;
+}
+
+/* ───────── 상단 ───────── */
+.oe-hero {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.oe-home {
+  display: inline-block;
+}
+
+.oe-logo {
+  display: block;
+  width: 168px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.oe-logo.is-large {
+  width: 220px;
+}
+
+.oe-pen {
+  stroke-dasharray: 1 2;
+  stroke-dashoffset: 1.02;
+  animation: oeDraw 2.6s ease-in-out 0.2s forwards;
+}
+
+@keyframes oeDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.oe-kicker {
+  margin: 32px 0 6px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--graphite);
+}
+
+.oe-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(34px, 9vw, 46px);
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+}
+
+.oe-lead {
+  max-width: 400px;
+  margin: 20px auto 0;
+  font-size: 15px;
+  color: #555;
+}
+
+.oe-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 32px 0 0;
+  padding: 18px 0;
+  border-block: 1px solid var(--line);
+}
+
+.oe-facts div + div {
+  border-left: 1px solid var(--line);
+}
+
+.oe-facts dt {
+  font-size: 12px;
+  color: var(--graphite);
+}
+
+.oe-facts dd {
+  margin: 4px 8px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ───────── 신청서 ───────── */
+.oe-form-title {
+  margin: 8px 0 28px;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.oe-field {
+  margin: 0 0 28px;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.oe-label {
+  display: block;
+  margin-bottom: 6px;
+  padding: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.oe-input {
+  width: 100%;
+  padding: 10px 2px;
+  border: 0;
+  border-bottom: 1.5px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 17px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.oe-input::placeholder {
+  color: #bdbdbd;
+}
+
+.oe-input:focus {
+  border-bottom-color: var(--ink);
+}
+
+.has-error .oe-input {
+  border-bottom-color: var(--sun);
+}
+
+.oe-affix {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  border-bottom: 1.5px solid var(--line);
+  transition: border-color 0.2s;
+}
+
+.oe-affix:focus-within {
+  border-bottom-color: var(--ink);
+}
+
+.has-error .oe-affix {
+  border-bottom-color: var(--sun);
+}
+
+.oe-affix .oe-input,
+.has-error .oe-affix .oe-input {
+  flex: 1;
+  min-width: 0;
+  border-bottom: 0;
+}
+
+.oe-prefix,
+.oe-suffix {
+  font-size: 17px;
+  color: var(--graphite);
+}
+
+.oe-row {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 24px;
+}
+
+/* 성별 선택 */
+.oe-choice {
+  display: flex;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.oe-chip {
+  position: relative;
+  flex: 1;
+  cursor: pointer;
+}
+
+.oe-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.oe-chip span {
+  display: block;
+  padding: 8px 0;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  text-align: center;
+  font-size: 15px;
+  color: #555;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.oe-chip:hover span {
+  border-color: #aaa;
+}
+
+.oe-chip input:checked + span {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+
+.oe-chip input:focus-visible + span {
+  outline: 2px solid var(--moon);
+  outline-offset: 2px;
+}
+
+.has-error .oe-chip span {
+  border-color: var(--sun);
+}
+
+/* 인터뷰 안내: 크레용 형광펜 느낌 */
+.oe-note {
+  margin: 2px 0 8px;
+  padding: 12px 14px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--star) 22%, var(--paper));
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #4a4a4a;
+}
+
+.oe-hint {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--graphite);
+}
+
+.oe-error {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #c9434c;
+}
+
+/* 봇 걸러내기용 숨김 칸 */
+.oe-trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ───────── 개인정보 안내 ───────── */
+.oe-privacy {
+  margin-top: 40px;
+  padding: 22px 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #555;
+}
+
+.oe-privacy h3 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.oe-privacy dl {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 6px 12px;
+  margin: 0 0 12px;
+}
+
+.oe-privacy dt {
+  color: var(--graphite);
+}
+
+.oe-privacy dd {
+  margin: 0;
+}
+
+.oe-privacy p {
+  margin: 0;
+}
+
+.oe-agree {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.oe-agree input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+
+.oe-agree.has-error span {
+  color: #c9434c;
+}
+
+/* ───────── 보내기 ───────── */
+.oe-fail {
+  margin: 24px 0 0;
+  padding: 12px 14px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--sun) 10%, #fff);
+  font-size: 13.5px;
+  color: #a8333b;
+}
+
+.oe-submit {
+  display: block;
+  width: 100%;
+  margin-top: 28px;
+  padding: 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  font: inherit;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.oe-submit:hover {
+  background: #444;
+}
+
+.oe-submit:focus-visible {
+  outline: 2px solid var(--moon);
+  outline-offset: 3px;
+}
+
+.oe-submit:disabled {
+  background: #9a9a9a;
+  cursor: progress;
+}
+
+/* ───────── 완료 화면 ───────── */
+.oe-done {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.oe-done-title {
+  margin: 36px 0 12px;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.oe-done p {
+  margin: 0 0 28px;
+  font-size: 15px;
+  color: #555;
+}
+
+.oe-link {
+  font-size: 14px;
+  color: var(--graphite);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.oe-link:hover {
+  color: var(--ink);
+}
+
+@media (max-width: 480px) {
+  .oe-page {
+    padding-top: 40px;
+  }
+
+  .oe-facts dd {
+    font-size: 13px;
+  }
+
+  .oe-row {
+    grid-template-columns: 1fr 96px;
+    gap: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oe-pen {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+#age {
+  text-align: right;
+}

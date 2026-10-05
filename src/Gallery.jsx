@@ -182,7 +182,7 @@ function Gallery({ images = [] }) {
   return (
     <section id="gallery" ref={sectionRef} className="gallery-page">
       {/* 페이지 상단 로고: 본문과 같은 속도로 함께 나타남 */}
-      <PageLogo visible={inView} label="Gallery" />
+      <PageLogo visible={inView} />
 
       <motion.div
         className="gallery-content"
