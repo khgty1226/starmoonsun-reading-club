@@ -6,11 +6,11 @@ import starmoonsun_full from "./assets/starmoonsun_full.png";
 import Gallery from "./Gallery";
 import { galleryImages } from "./galleryImages";
 
-// 아래 값들은 서로 독립적인 값으로, 각각 다른 것을 조절합니다.
+// 아래 값은 서로 독립적인 값으로, 각각 다른 것을 조절합니다.
 // PC와 모바일(1024px 이하)에서 로고·소개 글 위치를 따로 조정할 수 있습니다.
-const LOGO_CENTER_VH = 17; // 로고가 최종적으로 자리 잡을 세로 중심 위치 (PC)
-const LOGO_CENTER_VH_MOBILE = 12; // 로고가 최종적으로 자리 잡을 세로 중심 위치 (모바일)
-const CONTENT_TOP_VH = 4; // 소개 글이 시작되는 위치, 로고 바로 아래 (PC)
+const LOGO_CENTER_VH = 14; // 로고가 최종적으로 자리 잡을 세로 중심 위치 (PC)
+const LOGO_CENTER_VH_MOBILE = 14; // 로고가 최종적으로 자리 잡을 세로 중심 위치 (모바일)
+const CONTENT_TOP_VH = 0; // 소개 글이 시작되는 위치, 로고 바로 아래 (PC)
 const CONTENT_TOP_VH_MOBILE = 4; // 소개 글이 시작되는 위치, 로고 바로 아래 (모바일)
 const CONTACT_VH = 30; // Contact 영역이 차지하는 높이(화면 하단 기준)
 
@@ -118,24 +118,24 @@ function App() {
                 </mask>
               </defs>
 
-            <image
-              href={starmoonsun}
-              x="0"
-              y="0"
-              width="517"
-              height="185"
-              mask="url(#reveal)"
-            />
-          </svg>
+              <image
+                href={starmoonsun}
+                x="0"
+                y="0"
+                width="517"
+                height="185"
+                mask="url(#reveal)"
+              />
+            </svg>
 
-          {/* 2번 로고: Reading Club 글씨가 포함된 로고 */}
-          <img
-            className="logo-full"
-            src={starmoonsun_full}
-            alt="Reading Club"
-          />
-        </div>
-      </motion.div>
+            {/* 2번 로고: Reading Club 글씨가 포함된 로고 */}
+            <img
+              className="logo-full"
+              src={starmoonsun_full}
+              alt="Reading Club"
+            />
+          </div>
+        </motion.div>
 
         {/* 2. 소개 영역: 로고 아래 ~ Contact 위 사이, 위치 고정 + 서서히 나타남 */}
         {showIntroduce && (
@@ -155,21 +155,53 @@ function App() {
           </motion.div>
         )}
 
-      {/* 3. Contact 영역: 화면 가운데에서 생성되어 아래쪽 영역으로 이동 */}
-      {showContact && (
-        <motion.div
-          className="contact"
-          initial={{ y: `${-(50 - CONTACT_VH / 2 - lift_contact)}vh`, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.9, ease: "easeInOut" }}
-        >
-          <h1>Contact</h1>
-          <a href="https://www.instagram.com/starmoonsun.reading.club/">
-            @starmoonsun.reading.club
-          </a>
-        </motion.div>
-      )}
-    </div>
+        {/* 3. Contact 영역: 화면 가운데에서 생성되어 아래쪽 영역으로 이동 */}
+        {showContact && (
+          <motion.div
+            className="contact"
+            initial={{
+              y: `${-(50 - CONTACT_VH / 2 - lift_contact)}vh`,
+              opacity: 0,
+            }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.9, ease: "easeInOut" }}
+          >
+            <h1>Contact</h1>
+            <a href="https://www.instagram.com/starmoonsun.reading.club/">
+              @starmoonsun.reading.club
+            </a>
+          </motion.div>
+        )}
+
+        {/* 4. 스크롤 유도 아이콘: 모든 연출이 끝난 뒤 표시 */}
+        {showIntroduce && (
+          <button
+            type="button"
+            className="scroll-hint"
+            onClick={scrollToGallery}
+            aria-label="Gallery로 이동"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="28"
+              height="28"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M6 5l6 6 6-6" />
+              <path d="M6 12l6 6 6-6" opacity="0.5" />
+            </svg>
+          </button>
+        )}
+      </div>
+
+      {/* ───────── 2페이지 ───────── */}
+      <Gallery images={galleryImages} />
+    </>
   );
 }
 

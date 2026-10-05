@@ -13,6 +13,7 @@ import "./Gallery.css";
 const PAGE_SIZE = 9; // 3 x 3
 const PLACEHOLDER_COUNT = 18; // 이미지가 없을 때 보여줄 자리표시자 개수
 const SPRING = { type: "spring", stiffness: 300, damping: 35 };
+const EDGE_BUMP = 22; // 더 넘길 페이지가 없을 때 살짝 당겨지는 거리(px)
 
 const chunk = (arr, size) =>
   Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
@@ -67,6 +68,37 @@ function Lightbox({ image, onClose }) {
         ×
       </button>
     </motion.div>
+  );
+}
+
+/* ───────── 넘기기 화살표 ───────── */
+function GalleryArrow({ direction, onClick, disabled }) {
+  return (
+    <button
+      type="button"
+      className={`gallery-arrow gallery-arrow-${direction}`}
+      onClick={onClick}
+      aria-label={direction === "prev" ? "이전 페이지" : "다음 페이지"}
+      aria-disabled={disabled}
+    >
+      <svg
+        viewBox="0 0 24 24"
+        width="50"
+        height="50"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.1"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        {direction === "prev" ? (
+          <path d="M15 5l-7 7 7 7" />
+        ) : (
+          <path d="M9 5l7 7-7 7" />
+        )}
+      </svg>
+    </button>
   );
 }
 
@@ -127,6 +159,20 @@ function Gallery({ images = [] }) {
     else animate(x, -page * width, SPRING); // 페이지 유지: 제자리로 복귀
   };
 
+  // 화살표로 페이지 이동. 더 넘길 페이지가 없으면 살짝 당겨졌다가 되돌아옴
+  const goPage = (dir) => {
+    const next = page + dir;
+    if (next < 0 || next > pages.length - 1) {
+      const base = -page * width;
+      animate(x, [base, base - dir * EDGE_BUMP, base], {
+        duration: 0.35,
+        ease: "easeOut",
+      });
+      return;
+    }
+    setPage(next);
+  };
+
   const openImage = (image) => {
     if (dragged.current) return;
     setSelected(image);
@@ -136,7 +182,7 @@ function Gallery({ images = [] }) {
   return (
     <section id="gallery" ref={sectionRef} className="gallery-page">
       {/* 페이지 상단 로고: 본문과 같은 속도로 함께 나타남 */}
-      <PageLogo visible={inView} />
+      <PageLogo visible={inView} label="Gallery" />
 
       <motion.div
         className="gallery-content"
@@ -144,55 +190,78 @@ function Gallery({ images = [] }) {
         animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 28 }}
         transition={{ duration: inView ? 1.4 : 0.5, ease: "easeOut" }}
       >
-        <h1>Gallery</h1>
+        <div className="gallery-stage">
+          <GalleryArrow
+            direction="prev"
+            onClick={() => goPage(-1)}
+            disabled={page === 0}
+          />
 
-        <div className="gallery-viewport" ref={viewportRef}>
-          <motion.div
-            className="gallery-track"
-            style={{ x }}
-            drag="x"
-            dragConstraints={{ left: -(pages.length - 1) * width, right: 0 }}
-            dragElastic={0.2}
-            dragMomentum={false}
-            onDragStart={() => {
-              dragged.current = true;
-            }}
-            onDragEnd={handleDragEnd}
-          >
-            {pages.map((pageItems, pageIndex) => (
-              <div className="gallery-slide" key={pageIndex}>
-                {pageItems.map((item, i) => {
-                  const number = pageIndex * PAGE_SIZE + i + 1;
+          <div className="gallery-viewport" ref={viewportRef}>
+            <motion.div
+              className="gallery-track"
+              style={{ x }}
+              drag="x"
+              dragConstraints={{
+                left: -(pages.length - 1) * width,
+                right: 0,
+              }}
+              dragElastic={0.2}
+              dragMomentum={false}
+              onDragStart={() => {
+                dragged.current = true;
+              }}
+              onDragEnd={handleDragEnd}
+            >
+              {pages.map((pageItems, pageIndex) => (
+                <div className="gallery-slide" key={pageIndex}>
+                  {pageItems.map((item, i) => {
+                    const number = pageIndex * PAGE_SIZE + i + 1;
 
-                  if (item === null) {
+                    if (item === null) {
+                      return (
+                        <div
+                          key={number}
+                          className="gallery-cell placeholder"
+                        >
+                          {number}
+                        </div>
+                      );
+                    }
+
+                    const isString = typeof item === "string";
+                    const src = isString ? item : item.src;
+                    const alt = isString
+                      ? `Gallery ${number}`
+                      : (item.alt ?? `Gallery ${number}`);
+
                     return (
-                      <div key={number} className="gallery-cell placeholder">
-                        {number}
-                      </div>
+                      <button
+                        key={number}
+                        type="button"
+                        className="gallery-cell"
+                        onClick={() => openImage({ src, alt })}
+                        aria-label={`${alt} 크게 보기`}
+                      >
+                        <img
+                          src={src}
+                          alt={alt}
+                          draggable={false}
+                          loading="lazy"
+                        />
+                      </button>
                     );
-                  }
+                  })}
+                </div>
+              ))}
+            </motion.div>
+          </div>
 
-                  const isString = typeof item === "string";
-                  const src = isString ? item : item.src;
-                  const alt = isString
-                    ? `Gallery ${number}`
-                    : (item.alt ?? `Gallery ${number}`);
-
-                  return (
-                    <button
-                      key={number}
-                      type="button"
-                      className="gallery-cell"
-                      onClick={() => openImage({ src, alt })}
-                      aria-label={`${alt} 크게 보기`}
-                    >
-                      <img src={src} alt={alt} draggable={false} loading="lazy" />
-                    </button>
-                  );
-                })}
-              </div>
-            ))}
-          </motion.div>
+          <GalleryArrow
+            direction="next"
+            onClick={() => goPage(1)}
+            disabled={page === pages.length - 1}
+          />
         </div>
 
         {pages.length > 1 && (

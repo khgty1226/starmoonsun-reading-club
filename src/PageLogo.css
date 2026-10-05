@@ -1,0 +1,20 @@
+/* 페이지 상단에 고정되는 작은 로고.
+   너비는 1페이지에서 별·달·해 아이콘이 Reading Club 로고 안
+   같은 자리로 줄어들 때 쓰는 scale(0.43)과 동일한 비율입니다.
+   그래서 1페이지의 아이콘과 이 로고가 같은 크기·같은 비례 위치로 보입니다.
+   가로 중앙 정렬은 motion의 x: "-50%" 값으로 처리합니다(PageLogo.jsx 참고). */
+.page-logo {
+  position: absolute;
+  top: 9vh;
+  left: 50.5%;
+  z-index: 2;
+  width: calc(var(--logo-w) * 0.43);
+  height: auto;
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .page-logo {
+    top: 7.5vh;
+  }
+}
