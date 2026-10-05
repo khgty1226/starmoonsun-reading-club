@@ -1,24 +1,24 @@
+html {
+  scrollbar-gutter: stable;
+  --logo-w: 15vw; /* 로고 기준 크기. 모든 페이지의 상단 로고가 이 값을 함께 사용함 */
+}
+
 .page {
   position: relative;
   height: 100vh;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
-.logo-area {
-  position: relative;
+/* 로고를 담는 위치 기준점. top만 바꾸면 세로 위치가 끊김 없이 이동함 */
+.logo-anchor {
+  position: absolute;
+  left: 50%;
   z-index: 1;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
+  transform: translate(-50%, -50%);
 }
 
 /* 두 로고를 같은 자리에 겹쳐 놓는 영역 */
 .logo-stack {
-  --logo-w: 15vw;
   display: grid;
   place-items: center;
 }
@@ -66,12 +66,12 @@
   }
 }
 
-/* 가운데 소개 영역: 위(로고)와 아래(contact) 사이를 정확히 채움 */
+/* 가운데 소개 영역: 로고 아래(--content-top)부터 Contact 위(--contact-h)까지 */
 .introduce {
   position: absolute;
   left: 0;
   width: 100%;
-  top: var(--logo-h);
+  top: var(--content-top);
   bottom: var(--contact-h);
   box-sizing: border-box;
   padding: 0 24px;
@@ -117,11 +117,52 @@
   }
 }
 
+/* 아래로 스크롤 유도 아이콘 (우선 숨김) */
+.scroll-hint {
+  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: 4vh;
+  transform: translateX(-50%);
+  z-index: 3;
+  padding: 10px 14px;
+  border: 0;
+  background: none;
+  color: #777;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  animation: hintPulse 2s ease-in-out infinite;
+}
+
+.scroll-hint svg {
+  display: block;
+}
+
+.scroll-hint:hover {
+  animation: none;
+  opacity: 0.85;
+}
+
+.scroll-hint:focus-visible {
+  outline: 1px solid #aaa;
+  border-radius: 8px;
+}
+
+@keyframes hintPulse {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
 @media (max-width: 1024px) {
-  .logo-stack {
+  html {
     --logo-w: 50vw;
   }
-  
+
   .logo {
     width: var(--logo-w);
     max-height: 90%;
@@ -134,10 +175,10 @@
 
   /* 소개·Contact 영역을 함께 위로 올림 */
   .introduce {
-    top: calc(var(--logo-h) - var(--mobile-lift-introduce));
+    top: calc(var(--content-top) - var(--mobile-lift-introduce));
     bottom: calc(var(--contact-h) + var(--mobile-lift-introduce));
   }
-  
+
   .contact {
     bottom: var(--mobile-lift-contact);
   }
