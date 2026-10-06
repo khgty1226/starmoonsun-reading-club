@@ -23,12 +23,12 @@
   left: 0;
   width: 100%;
   top: var(--invite-top, 60vh);
-  /* 제목이 가운데 정렬일 때와 같은 자리에서 시작하도록,
-     (그림 폭 + 간격)의 절반만큼 왼쪽으로 옮김 */
+  /* 그림까지 포함한 묶음이 화면 가운데에 균형 있게 보이도록
+     (그림 폭 + 간격)의 1/4만큼만 왼쪽으로 옮김 */
   --invite-book-w: 52px;
   --invite-gap: 16px;
   transform: translate(
-    calc((var(--invite-book-w) + var(--invite-gap)) / -2),
+    calc((var(--invite-book-w) + var(--invite-gap)) / -4),
     -50%
   );
   display: flex;
