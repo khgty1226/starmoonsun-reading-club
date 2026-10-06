@@ -67,31 +67,16 @@ function Field({ id, label, error, hint, children }) {
   );
 }
 
-/* 1페이지와 같은 방식으로 별·달·해가 그려지듯 나타나는 로고 */
-function DrawnLogo({ id, className = "" }) {
+/* 상단 별·달·해 로고 (그리기 연출 없이 바로 표시) */
+function Logo({ className = "" }) {
   return (
-    <svg
+    <img
       className={`oe-logo ${className}`}
-      viewBox="0 0 517 185"
-      role="img"
-      aria-label="별달해 독서클럽"
-    >
-      <defs>
-        <mask id={id} maskUnits="userSpaceOnUse" x="0" y="0" width="517" height="185">
-          <path
-            className="oe-pen"
-            d="M -20 160 L 40 25 L 100 160 L 160 25 L 220 160 L 280 25 L 340 160 L 400 25 L 460 160 L 520 25 L 580 160"
-            pathLength="1"
-            fill="none"
-            stroke="white"
-            strokeWidth="140"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </mask>
-      </defs>
-      <image href={starmoonsun} x="0" y="0" width="517" height="185" mask={`url(#${id})`} />
-    </svg>
+      src={starmoonsun}
+      alt="별달해 독서클럽"
+      width="517"
+      height="185"
+    />
   );
 }
 
@@ -169,7 +154,7 @@ function OpenEvent() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
           >
-            <DrawnLogo id="oe-reveal-done" className="is-large" />
+            <Logo className="is-large" />
             <h1 className="oe-done-title">신청이 접수되었어요</h1>
             <p>
               {form.name.trim()}님, 참여해 주셔서 고맙습니다.
@@ -191,13 +176,12 @@ function OpenEvent() {
           >
             <header className="oe-hero">
               <a href="/" className="oe-home" aria-label="별달해 독서클럽 홈으로">
-                <DrawnLogo id="oe-reveal" />
+                <Logo />
               </a>
               <p className="oe-kicker">별달해 독서클럽 오픈 이벤트</p>
               <h1 className="oe-title">
                 나에게 꼭 필요한
-                <br />
-                책은?
+                <br className="oe-title-break" /> 책은?
               </h1>
               <p className="oe-lead">
                 짧은 인터뷰로 당신의 이야기를 듣고, 지금 당신에게 꼭 필요한 책

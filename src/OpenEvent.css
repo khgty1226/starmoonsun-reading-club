@@ -40,25 +40,13 @@
 
 .oe-logo {
   display: block;
-  width: 168px;
+  width: 84px;
   height: auto;
   margin: 0 auto;
 }
 
 .oe-logo.is-large {
-  width: 220px;
-}
-
-.oe-pen {
-  stroke-dasharray: 1 2;
-  stroke-dashoffset: 1.02;
-  animation: oeDraw 2.6s ease-in-out 0.2s forwards;
-}
-
-@keyframes oeDraw {
-  to {
-    stroke-dashoffset: 0;
-  }
+  width: 110px;
 }
 
 .oe-kicker {
@@ -426,13 +414,38 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .oe-pen {
-    animation: none;
-    stroke-dashoffset: 0;
-  }
-}
 
 #age {
   text-align: right;
+}
+
+/* ───────── PC(1025px 이상): 폭을 넓히고 제목을 한 줄로 ───────── */
+@media (min-width: 1025px) {
+  .oe-page {
+    max-width: 760px;
+    padding-top: 72px;
+  }
+
+  .oe-title {
+    font-size: 54px;
+    white-space: nowrap;
+  }
+
+  .oe-title-break {
+    display: none;
+  }
+
+  .oe-lead {
+    max-width: 540px;
+    font-size: 16px;
+  }
+
+  .oe-facts dd {
+    font-size: 15px;
+  }
+
+  .oe-row {
+    grid-template-columns: 1fr 160px;
+    gap: 40px;
+  }
 }
