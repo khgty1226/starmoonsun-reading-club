@@ -22,6 +22,17 @@
   position: relative;
 }
 
+/* 섹션 제목: 갤러리 바로 위, 로고와의 사이 공간에 띄움 */
+.gallery-heading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 40px);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
 .gallery-viewport {
   width: var(--gallery-w);
   overflow: hidden;
@@ -212,10 +223,14 @@
 
 @media (max-width: 1024px) {
   .gallery-page {
-    --gallery-w: min(90vw, 560px, calc(100vh - 260px));
+    --gallery-w: min(90vw, 560px, calc(100vh - 300px)); /* 제목 자리 확보 */
   }
 
   .gallery-content {
     margin-top: 0; /* 모바일은 이번 조정 대상이 아니므로 원래대로 유지 */
+  }
+
+  .gallery-heading {
+    bottom: calc(100% + 34px);
   }
 }

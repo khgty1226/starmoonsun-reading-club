@@ -8,6 +8,7 @@ import {
   useMotionValue,
 } from "motion/react";
 import PageLogo from "./PageLogo";
+import SectionTitle from "./SectionTitle";
 import "./Gallery.css";
 
 const PAGE_SIZE = 9; // 3 x 3
@@ -191,6 +192,11 @@ function Gallery({ images = [] }) {
         transition={{ duration: inView ? 1.4 : 0.5, ease: "easeOut" }}
       >
         <div className="gallery-stage">
+          {/* 섹션 제목: 갤러리 위 빈 공간에 놓여 사진 위치는 그대로 */}
+          <div className="gallery-heading">
+            <SectionTitle visible={inView}>Gallery</SectionTitle>
+          </div>
+
           <GalleryArrow
             direction="prev"
             onClick={() => goPage(-1)}
