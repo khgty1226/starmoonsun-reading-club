@@ -421,7 +421,12 @@
   }
 
   .oe-title {
-    font-size: 54px;
+    font-size: 52px;
+    white-space: nowrap;
+  }
+
+  .oe-title-break {
+    display: none;
   }
 
   .oe-pc-break {
