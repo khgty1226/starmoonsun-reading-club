@@ -7,7 +7,7 @@ import "./OpenEvent.css";
 // 신청 내용은 /api/apply(Vercel 함수)가 운영진 이메일로 보냅니다.
 // VITE_FORM_MOCK=true 로 빌드하면 실제 전송 없이 완료 화면만 보여 줍니다(디자인 확인용).
 
-const EVENT_END = "10월 15일";
+const EVENT_END = "10월 31일";
 const MOCK = import.meta.env.VITE_FORM_MOCK === "true";
 
 const EMPTY = {
