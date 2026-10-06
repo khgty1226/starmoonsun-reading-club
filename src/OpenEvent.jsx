@@ -161,6 +161,12 @@ function OpenEvent() {
               <br />
               당첨되시면 남겨 주신 연락처로 따로 연락드릴게요.
             </p>
+            <a className="oe-back" href="/">
+              <svg viewBox="0 0 12 12" aria-hidden="true">
+                <path d="M7.5 2.5 4 6l3.5 3.5" />
+              </svg>
+              메인으로 돌아가기
+            </a>
             <a
               className="oe-link"
               href="https://www.instagram.com/starmoonsun.reading.club/"

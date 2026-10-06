@@ -383,6 +383,48 @@
   color: #555;
 }
 
+/* 접수 완료 후 메인으로 돌아가는 버튼: 신청 버튼과 같은 알약 모양의 선 버전 */
+.oe-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 22px;
+  padding: 11px 24px 11px 18px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  font-size: 15px;
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.oe-back svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s;
+}
+
+.oe-back:hover {
+  background: var(--ink);
+  color: #fff;
+}
+
+.oe-back:hover svg {
+  transform: translateX(-3px);
+}
+
+.oe-back:focus-visible {
+  outline: 2px solid var(--moon);
+  outline-offset: 3px;
+}
+
 .oe-link {
   font-size: 14px;
   color: var(--graphite);
