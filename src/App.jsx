@@ -4,6 +4,8 @@ import "./App.css";
 import starmoonsun from "./assets/starmoonsun.png";
 import starmoonsun_full from "./assets/starmoonsun_full.png";
 import Gallery from "./Gallery";
+import EventInvite from "./EventInvite";
+import { isEventOpen } from "./eventConfig";
 import { galleryImages } from "./galleryImages";
 
 // 아래 값은 서로 독립적인 값으로, 각각 다른 것을 조절합니다.
@@ -154,6 +156,9 @@ function App() {
             </p>
           </motion.div>
         )}
+
+        {/* 2-1. 오픈 이벤트 안내: 소개 글 다음에 나타나며, 마감 후 자동으로 숨김 */}
+        {showIntroduce && isEventOpen() && <EventInvite />}
 
         {/* 3. Contact 영역: 화면 가운데에서 생성되어 아래쪽 영역으로 이동 */}
         {showContact && (
