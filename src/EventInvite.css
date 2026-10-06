@@ -278,3 +278,11 @@
     animation: none;
   }
 }
+
+/* '오픈 이벤트'와 신청 링크는 화면 가운데에 오도록,
+   묶음이 치우친 만큼((그림 폭 + 간격)의 1/4) 되돌림 */
+.invite-kicker,
+.invite-cta {
+  position: relative;
+  left: calc((var(--invite-book-w) + var(--invite-gap)) / -4);
+}
