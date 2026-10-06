@@ -8,7 +8,7 @@
 
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--invite-gap, 16px);
   text-align: left;
   padding: 14px 20px;
   color: var(--invite-ink);
@@ -23,7 +23,14 @@
   left: 0;
   width: 100%;
   top: var(--invite-top, 60vh);
-  transform: translateY(-50%);
+  /* 제목이 가운데 정렬일 때와 같은 자리에서 시작하도록,
+     (그림 폭 + 간격)의 절반만큼 왼쪽으로 옮김 */
+  --invite-book-w: 52px;
+  --invite-gap: 16px;
+  transform: translate(
+    calc((var(--invite-book-w) + var(--invite-gap)) / -2),
+    -50%
+  );
   display: flex;
   justify-content: center;
   z-index: 2;
@@ -51,7 +58,7 @@
 /* ───────── 블라인드 북 그림 ───────── */
 .invite-book {
   flex: none;
-  width: 52px;
+  width: var(--invite-book-w, 52px);
   height: auto;
   overflow: visible;
 }
@@ -246,16 +253,13 @@
 }
 
 @media (max-width: 1024px) {
-  .invite-book {
-    width: 44px;
+  .invite-wrap {
+    --invite-book-w: 44px;
+    --invite-gap: 12px;
   }
 
   .invite-text {
     font-size: 19px;
-  }
-
-  .invite {
-    gap: 12px;
   }
 
   .invite-body {
