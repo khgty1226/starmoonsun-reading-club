@@ -45,7 +45,7 @@ const validate = (f) => {
   if (!/^01[016789]-\d{3,4}-\d{4}$/.test(f.phone))
     e.phone = "휴대폰 번호를 끝까지 입력해 주세요.";
   if (f.area.trim().length < 2)
-    e.area = "인터뷰가 가능한 동네를 입력해 주세요.";
+    e.area = "사는 곳(동)을 입력해 주세요.";
   if (!f.agree) e.agree = "개인정보 수집·이용에 동의해야 신청할 수 있어요.";
   return e;
 };
@@ -184,9 +184,8 @@ function OpenEvent() {
                 <br className="oe-title-break" /> 책은?
               </h1>
               <p className="oe-lead">
-                짧은 인터뷰로 당신의 이야기를 듣고, 지금 당신에게 꼭 필요한 책
-                한 권을 골라 포장해 선물합니다. 어떤 책일지는 열어 보기 전까지
-                비밀이에요.
+                지금 당신에게 꼭 필요한 책 한 권을 골라 포장해 선물합니다.
+                <br className="oe-pc-break" /> 어떤 책일지는 열어 보기 전까지 비밀이에요.
               </p>
 
               <dl className="oe-facts">
@@ -297,11 +296,7 @@ function OpenEvent() {
                 />
               </Field>
 
-              <Field id="area" label="인터뷰 가능한 동네(동)" error={errors.area}>
-                <p className="oe-note">
-                  이 이벤트는 당첨자와 15~20분 정도 오프라인 인터뷰를 하고 책을
-                  고릅니다. 만나기 편한 동네를 적어 주시면 근처 카페에서 진행할게요.
-                </p>
+              <Field id="area" label="사는 곳(동)" error={errors.area}>
                 <input
                   id="area"
                   className="oe-input"
@@ -331,7 +326,7 @@ function OpenEvent() {
                 <h3 id="privacy-title">개인정보 수집·이용 안내</h3>
                 <dl>
                   <dt>수집 항목</dt>
-                  <dd>이름, 성별, 나이, 인스타그램 아이디, 휴대폰 번호, 인터뷰 가능 지역</dd>
+                  <dd>이름, 성별, 나이, 인스타그램 아이디, 휴대폰 번호, 사는 곳(동)</dd>
                   <dt>이용 목적</dt>
                   <dd>이벤트 참여 확인, 당첨자 추첨과 연락, 인터뷰 일정 조율, 도서 전달</dd>
                   <dt>보유 기간</dt>

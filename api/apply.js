@@ -36,7 +36,7 @@ function validate(body) {
     return [null, "인스타그램 아이디를 확인해 주세요."];
   if (!/^01[016789]-\d{3,4}-\d{4}$/.test(data.phone))
     return [null, "연락처를 확인해 주세요."];
-  if (data.area.length < 2) return [null, "인터뷰 가능한 동네를 입력해 주세요."];
+  if (data.area.length < 2) return [null, "사는 곳(동)을 입력해 주세요."];
   if (!data.agree) return [null, "개인정보 수집·이용에 동의해 주세요."];
   return [data, null];
 }
@@ -68,7 +68,7 @@ export default async function handler(req, res) {
     ["나이", `${data.age}세`],
     ["인스타그램", `@${data.instagram}`],
     ["연락처", data.phone],
-    ["인터뷰 가능 동네", data.area],
+    ["사는 곳(동)", data.area],
     ["개인정보 동의", "동의함"],
     ["신청 시각", submittedAt],
   ];

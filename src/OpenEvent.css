@@ -65,6 +65,11 @@
   letter-spacing: -0.01em;
 }
 
+/* PC에서만 문장 단위로 줄바꿈 */
+.oe-pc-break {
+  display: none;
+}
+
 .oe-lead {
   max-width: 400px;
   margin: 20px auto 0;
@@ -173,9 +178,10 @@
   color: var(--graphite);
 }
 
+/* 성별 버튼 영역을 줄이고, 줄어든 만큼 나이 칸을 넓힘 */
 .oe-row {
   display: grid;
-  grid-template-columns: 1fr 120px;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
   gap: 24px;
 }
 
@@ -200,11 +206,11 @@
 
 .oe-chip span {
   display: block;
-  padding: 8px 0;
+  padding: 6px 0;
   border: 1.5px solid var(--line);
   border-radius: 999px;
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
   color: #555;
   transition:
     background-color 0.2s,
@@ -229,17 +235,6 @@
 
 .has-error .oe-chip span {
   border-color: var(--sun);
-}
-
-/* 인터뷰 안내: 크레용 형광펜 느낌 */
-.oe-note {
-  margin: 2px 0 8px;
-  padding: 12px 14px;
-  border-radius: 6px;
-  background: color-mix(in srgb, var(--star) 22%, var(--paper));
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: #4a4a4a;
 }
 
 .oe-hint {
@@ -409,7 +404,6 @@
   }
 
   .oe-row {
-    grid-template-columns: 1fr 96px;
     gap: 16px;
   }
 }
@@ -422,21 +416,20 @@
 /* ───────── PC(1025px 이상): 폭을 넓히고 제목을 한 줄로 ───────── */
 @media (min-width: 1025px) {
   .oe-page {
-    max-width: 760px;
+    max-width: 680px;
     padding-top: 72px;
   }
 
   .oe-title {
     font-size: 54px;
-    white-space: nowrap;
   }
 
-  .oe-title-break {
-    display: none;
+  .oe-pc-break {
+    display: inline;
   }
 
   .oe-lead {
-    max-width: 540px;
+    max-width: 600px;
     font-size: 16px;
   }
 
@@ -445,7 +438,7 @@
   }
 
   .oe-row {
-    grid-template-columns: 1fr 160px;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
     gap: 40px;
   }
 }
