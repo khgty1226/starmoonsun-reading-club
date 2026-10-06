@@ -7,9 +7,9 @@
   --invite-sun: #e8636b;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
+  text-align: left;
   padding: 14px 20px;
   color: var(--invite-ink);
   text-decoration: none;
@@ -40,10 +40,17 @@
   }
 }
 
+/* 글 묶음: 왼쪽 정렬 */
+.invite-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
 /* ───────── 블라인드 북 그림 ───────── */
 .invite-book {
   flex: none;
-  margin-bottom: -2px;
   width: 52px;
   height: auto;
   overflow: visible;
@@ -248,8 +255,11 @@
   }
 
   .invite {
+    gap: 12px;
+  }
+
+  .invite-body {
     gap: 7px;
-    padding: 8px 16px;
   }
 }
 
