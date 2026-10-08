@@ -16,6 +16,11 @@ const PLACEHOLDER_COUNT = 18; // 이미지가 없을 때 보여줄 자리표시�
 const SPRING = { type: "spring", stiffness: 300, damping: 35 };
 const EDGE_BUMP = 22; // 더 넘길 페이지가 없을 때 살짝 당겨지는 거리(px)
 
+// 갤러리가 나타나는 기준(화면에 보이는 비율). 1페이지와 같은 1024px 기준으로 PC/모바일 구분
+const IN_VIEW_AMOUNT = window.matchMedia("(max-width: 1024px)").matches
+  ? 0.25
+  : 0.4;
+
 const chunk = (arr, size) =>
   Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
     arr.slice(i * size, i * size + size),
@@ -113,9 +118,9 @@ function Gallery({ images = [] }) {
   const [selected, setSelected] = useState(null);
   const x = useMotionValue(0);
 
-  // 2페이지가 화면의 25% 이상 보이면 true. 상단 로고와 본문이 이 값을 함께 씀
-  // (60%였을 땐 스크롤을 한참 내려야 나타나서, 반쯤 올라오기 전에 나타나도록 낮춤)
-  const inView = useInView(sectionRef, { amount: 0.25 });
+  // 2페이지가 화면에 일정 비율 이상 보이면 true. 상단 로고와 본문이 이 값을 함께 씀
+  // 모바일은 25%, PC는 조금 더 내려왔을 때(40%) 나타나도록 따로 둠
+  const inView = useInView(sectionRef, { amount: IN_VIEW_AMOUNT });
 
   const items =
     images.length > 0
