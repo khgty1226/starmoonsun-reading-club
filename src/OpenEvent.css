@@ -383,26 +383,22 @@
   color: #555;
 }
 
-/* 접수 완료 후 메인으로 돌아가는 버튼: 신청 버튼과 같은 알약 모양의 선 버전 */
+/* 접수 완료 후 메인으로 돌아가는 링크: 인스타 계정 아래 텍스트로.
+   밑줄 없이 차콜색 + 왼쪽 화살표로 인스타 링크와 구분 */
 .oe-back {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  margin-bottom: 22px;
-  padding: 11px 24px 11px 18px;
-  border: 1.5px solid var(--ink);
-  border-radius: 999px;
-  font-size: 15px;
+  gap: 4px;
+  margin-top: 18px;
+  font-size: 14px;
   color: var(--ink);
   text-decoration: none;
-  transition:
-    background-color 0.2s,
-    color 0.2s;
+  transition: opacity 0.2s;
 }
 
 .oe-back svg {
-  width: 13px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.5;
@@ -412,8 +408,7 @@
 }
 
 .oe-back:hover {
-  background: var(--ink);
-  color: #fff;
+  opacity: 0.7;
 }
 
 .oe-back:hover svg {
@@ -423,6 +418,7 @@
 .oe-back:focus-visible {
   outline: 2px solid var(--moon);
   outline-offset: 3px;
+  border-radius: 4px;
 }
 
 .oe-link {

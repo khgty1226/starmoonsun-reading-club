@@ -161,17 +161,17 @@ function OpenEvent() {
               <br />
               당첨되시면 남겨 주신 연락처로 따로 연락드릴게요.
             </p>
-            <a className="oe-back" href="/">
-              <svg viewBox="0 0 12 12" aria-hidden="true">
-                <path d="M7.5 2.5 4 6l3.5 3.5" />
-              </svg>
-              메인으로 돌아가기
-            </a>
             <a
               className="oe-link"
               href="https://www.instagram.com/starmoonsun.reading.club/"
             >
               @starmoonsun.reading.club
+            </a>
+            <a className="oe-back" href="/">
+              <svg viewBox="0 0 12 12" aria-hidden="true">
+                <path d="M7.5 2.5 4 6l3.5 3.5" />
+              </svg>
+              메인으로 돌아가기
             </a>
           </motion.section>
         ) : (
@@ -343,8 +343,7 @@ function OpenEvent() {
                 </dl>
                 <p>
                   동의하지 않을 수 있으며, 동의하지 않으면 이벤트에 참여할 수
-                  없습니다. 문의는 인스타그램 @starmoonsun.reading.club DM으로
-                  받습니다.
+                  없습니다.
                 </p>
 
                 <label
