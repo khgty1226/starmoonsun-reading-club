@@ -113,8 +113,9 @@ function Gallery({ images = [] }) {
   const [selected, setSelected] = useState(null);
   const x = useMotionValue(0);
 
-  // 2페이지가 화면의 60% 이상 보이면 true. 상단 로고와 본문이 이 값을 함께 씀
-  const inView = useInView(sectionRef, { amount: 0.6 });
+  // 2페이지가 화면의 25% 이상 보이면 true. 상단 로고와 본문이 이 값을 함께 씀
+  // (60%였을 땐 스크롤을 한참 내려야 나타나서, 반쯤 올라오기 전에 나타나도록 낮춤)
+  const inView = useInView(sectionRef, { amount: 0.25 });
 
   const items =
     images.length > 0
