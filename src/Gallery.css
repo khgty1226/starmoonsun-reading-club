@@ -234,3 +234,13 @@
     bottom: calc(100% + 34px);
   }
 }
+/* 태블릿: 사진첩을 화면에 맞게 키우되 세로 높이를 넘지 않게 */
+@media (min-width: 600px) and (max-width: 1024px) and (min-height: 600px) {
+  .gallery-page {
+    --gallery-w: min(78vw, 600px, calc(100vh - 370px));
+  }
+
+  .gallery-heading {
+    bottom: calc(100% + 40px);
+  }
+}

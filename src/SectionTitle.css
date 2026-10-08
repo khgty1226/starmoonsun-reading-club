@@ -58,3 +58,9 @@
     transition: none;
   }
 }
+
+@media (min-width: 600px) and (max-width: 1024px) and (min-height: 600px) {
+  .section-title {
+    font-size: 23px;
+  }
+}

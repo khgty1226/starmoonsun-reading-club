@@ -187,3 +187,26 @@ html {
     bottom: var(--mobile-lift-hint);
   }
 }
+/* ───────── 태블릿 (600~1024px, 세로 600px 이상) ─────────
+   휴대폰 기준(로고 50vw)을 그대로 쓰면 로고가 너무 크고 글이 작아 보여서
+   로고는 줄이고 글은 키움. PC(1025px 이상)와 휴대폰(599px 이하)은 영향 없음 */
+@media (min-width: 600px) and (max-width: 1024px) and (min-height: 600px) {
+  html {
+    --logo-w: min(32vw, 34vh);
+  }
+
+  .introduce p {
+    max-width: 600px;
+    font-size: 17px;
+  }
+
+  .contact {
+    h1 {
+      font-size: 18px;
+    }
+
+    a {
+      font-size: 17px;
+    }
+  }
+}

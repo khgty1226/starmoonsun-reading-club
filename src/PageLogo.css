@@ -18,3 +18,13 @@
     top: 7.5vh;
   }
 }
+/* 태블릿: 세로로 긴 화면에서 로고가 갤러리와 너무 멀어지지 않도록
+   제목 바로 위로 붙여 줌 (가로 화면처럼 여유가 없으면 원래 위치 7.5vh 유지) */
+@media (min-width: 600px) and (max-width: 1024px) and (min-height: 600px) {
+  .page-logo {
+    top: max(
+      7.5vh,
+      calc(50vh - var(--gallery-w, 0px) / 2 - 110px - var(--logo-w) * 0.154)
+    );
+  }
+}

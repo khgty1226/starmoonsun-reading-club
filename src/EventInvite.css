@@ -286,3 +286,24 @@
   position: relative;
   left: calc((var(--invite-book-w) + var(--invite-gap)) / -4);
 }
+
+/* 태블릿: 그림과 글을 조금 키움 (App.css의 태블릿 구간과 같은 기준) */
+@media (min-width: 600px) and (max-width: 1024px) and (min-height: 600px) {
+  .invite-wrap {
+    --invite-book-w: 58px;
+    --invite-gap: 16px;
+  }
+
+  .invite-body {
+    gap: 10px;
+  }
+
+  .invite-text {
+    font-size: 25px;
+  }
+
+  .invite-kicker,
+  .invite-cta {
+    font-size: 15px;
+  }
+}
