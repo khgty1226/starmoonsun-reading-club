@@ -178,13 +178,11 @@ function App() {
               target="_blank"
               rel="noreferrer"
             >
-              {/* 눌러서 인스타그램으로 갈 수 있다는 걸 은은하게 알려 주는 선 아이콘 */}
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle className="dot" cx="17.2" cy="6.8" r="0.9" />
-              </svg>
               <span>@starmoonsun.reading.club</span>
+              {/* 바깥 사이트(인스타그램)로 이동한다는 걸 알려 주는 작은 화살표 */}
+              <svg viewBox="0 0 12 12" aria-hidden="true">
+                <path d="M4 8 8 4M4.5 4H8v3.5" />
+              </svg>
             </a>
           </motion.div>
         )}
