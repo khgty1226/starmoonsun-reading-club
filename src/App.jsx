@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { animate, motion } from "motion/react";
 import "./App.css";
-// 진한 손그림 로고 (갤러리 상단 로고와 같은 진하기)
-import starmoonsun from "./assets/starmoonsun_deep.png";
+import starmoonsun from "./assets/starmoonsun.png";
+// 자리 잡은 뒤의 로고: 별·달·해만 진한 그림, Reading Club 글씨는 원본 그대로
 import starmoonsun_full from "./assets/starmoonsun_full_deep.png";
 import Gallery from "./Gallery";
 import EventInvite from "./EventInvite";
