@@ -85,6 +85,8 @@ html {
   p {
     max-width: 560px;
     margin: 0 0 1.2em;
+    /* 신청서·이벤트 안내와 같은 고운바탕: 책장을 넘기는 듯한 부드러운 명조 */
+    font-family: "Gowun Batang", "Nanum Myeongjo", serif;
     font-size: 15px;
     line-height: 1.9;
     word-break: keep-all;
@@ -240,5 +242,21 @@ html {
     a {
       font-size: 17px;
     }
+  }
+}
+
+/* ───────── 휴대폰(599px 이하): 로고와 함께 소개 글을 조금 더 위로 ───────── */
+@media (max-width: 599px) {
+  html {
+    --phone-lift: 2vh; /* App.jsx의 PHONE_LIFT_VH와 같은 값 */
+  }
+
+  .introduce {
+    top: calc(
+      var(--content-top) - var(--mobile-lift-introduce) - var(--phone-lift)
+    );
+    bottom: calc(
+      var(--contact-h) + var(--mobile-lift-introduce) + var(--phone-lift)
+    );
   }
 }

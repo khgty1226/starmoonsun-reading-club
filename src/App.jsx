@@ -13,6 +13,7 @@ import { galleryImages } from "./galleryImages";
 // PC와 모바일(1024px 이하)에서 로고·소개 글 위치를 따로 조정할 수 있습니다.
 const LOGO_CENTER_VH = 14; // 로고가 최종적으로 자리 잡을 세로 중심 위치 (PC)
 const LOGO_CENTER_VH_MOBILE = 14; // 로고가 최종적으로 자리 잡을 세로 중심 위치 (모바일)
+const PHONE_LIFT_VH = 2; // 휴대폰(599px 이하)에서 로고·소개 글·이벤트 안내를 함께 더 올리는 값 (App.css의 --phone-lift와 같은 값)
 const CONTENT_TOP_VH = 0; // 소개 글이 시작되는 위치, 로고 바로 아래 (PC)
 const CONTENT_TOP_VH_MOBILE = 4; // 소개 글이 시작되는 위치, 로고 바로 아래 (모바일)
 const CONTACT_VH = 30; // Contact 영역이 차지하는 높이(화면 하단 기준)
@@ -28,7 +29,10 @@ function App() {
 
   const isMobile = window.matchMedia("(max-width: 1024px)").matches;
   const lift_contact = isMobile ? MOBILE_LIFT_VH_CONTACT : 0;
-  const logoCenterVh = isMobile ? LOGO_CENTER_VH_MOBILE : LOGO_CENTER_VH;
+  const isPhone = window.matchMedia("(max-width: 599px)").matches;
+  const logoCenterVh = isMobile
+    ? LOGO_CENTER_VH_MOBILE - (isPhone ? PHONE_LIFT_VH : 0)
+    : LOGO_CENTER_VH;
   const contentTopVh = isMobile ? CONTENT_TOP_VH_MOBILE : CONTENT_TOP_VH;
 
   const scrollAnim = useRef(null);

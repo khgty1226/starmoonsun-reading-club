@@ -307,3 +307,10 @@
     font-size: 15px;
   }
 }
+
+/* 휴대폰: 로고·소개 글과 같은 만큼 위로 (App.css의 --phone-lift) */
+@media (max-width: 599px) {
+  .invite-wrap {
+    top: calc(58vh - var(--phone-lift, 0vh));
+  }
+}
