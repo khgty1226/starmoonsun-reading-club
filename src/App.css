@@ -117,23 +117,35 @@ html {
   }
 }
 
-/* 인스타 링크: 옅은 밑줄로 '누를 수 있음'을 은은하게 표시 */
+/* 인스타 링크: 아이디 뒤 작은 ↗ 화살표로 '누르면 인스타그램으로 이동'을 은은하게 표시.
+   화살표는 글씨 오른쪽 바깥에 띄워서, 글씨 자체는 정확히 가운데 정렬 유지 */
 .contact .contact-insta {
+  position: relative;
   color: #a0a0a0;
   transition: color 0.25s;
 
-  span {
-    padding-bottom: 2px;
-    border-bottom: 1px solid #e2e2e2;
-    transition: border-color 0.25s;
+  svg {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    margin-left: 4px;
+    width: 12px;
+    height: 12px;
+    transform: translateY(-75%); /* 글씨 윗부분 높이에 맞춤 */
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.25s;
   }
 
   &:hover {
     color: #2b2b2b;
   }
 
-  &:hover span {
-    border-color: #2b2b2b;
+  &:hover svg {
+    transform: translate(2px, calc(-75% - 2px));
   }
 }
 

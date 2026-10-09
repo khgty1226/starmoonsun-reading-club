@@ -179,6 +179,11 @@ function App() {
               rel="noreferrer"
             >
               <span>@starmoonsun.reading.club</span>
+              {/* 바깥 사이트(인스타그램)로 이동한다는 표시. 글씨 오른쪽 밖에 떠 있어
+                  글씨의 가운데 정렬에는 영향을 주지 않음 */}
+              <svg viewBox="0 0 12 12" aria-hidden="true">
+                <path d="M4 8 8 4M4.5 4H8v3.5" />
+              </svg>
             </a>
           </motion.div>
         )}
