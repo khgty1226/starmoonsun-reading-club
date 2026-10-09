@@ -172,8 +172,19 @@ function App() {
             transition={{ duration: 0.9, ease: "easeInOut" }}
           >
             <h1>Contact</h1>
-            <a href="https://www.instagram.com/starmoonsun.reading.club/">
-              @starmoonsun.reading.club
+            <a
+              className="contact-insta"
+              href="https://www.instagram.com/starmoonsun.reading.club/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {/* 눌러서 인스타그램으로 갈 수 있다는 걸 은은하게 알려 주는 선 아이콘 */}
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle className="dot" cx="17.2" cy="6.8" r="0.9" />
+              </svg>
+              <span>@starmoonsun.reading.club</span>
             </a>
           </motion.div>
         )}

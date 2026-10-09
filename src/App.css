@@ -117,6 +117,42 @@ html {
   }
 }
 
+/* 인스타 링크: 작은 선 아이콘 + 옅은 밑줄로 '누를 수 있음'을 은은하게 표시 */
+.contact .contact-insta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.25s;
+
+  svg {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    opacity: 0.8;
+  }
+
+  svg .dot {
+    fill: currentColor;
+    stroke: none;
+  }
+
+  span {
+    padding-bottom: 1px;
+    border-bottom: 1px solid #dedede;
+    transition: border-color 0.25s;
+  }
+
+  &:hover {
+    color: #2b2b2b;
+  }
+
+  &:hover span {
+    border-color: #2b2b2b;
+  }
+}
+
 /* 아래로 스크롤 유도 아이콘 (우선 숨김) */
 .scroll-hint {
   display: none;

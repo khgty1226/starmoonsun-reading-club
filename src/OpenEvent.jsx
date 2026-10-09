@@ -180,6 +180,14 @@ function OpenEvent() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
+            {/* 페이지 왼쪽 위의 작은 '메인으로' 링크 */}
+            <a className="oe-top-back" href="/">
+              <svg viewBox="0 0 12 12" aria-hidden="true">
+                <path d="M7.5 2.5 4 6l3.5 3.5" />
+              </svg>
+              메인으로
+            </a>
+
             <header className="oe-hero">
               <a href="/" className="oe-home" aria-label="별달해 독서클럽 홈으로">
                 <Logo />

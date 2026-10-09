@@ -11,10 +11,12 @@
   --sun: #e8636b;
   --serif: "Gowun Batang", "Nanum Myeongjo", serif;
 
+  position: relative; /* 왼쪽 위 '메인으로' 링크의 기준 */
   width: 100%;
   max-width: 520px;
   margin: 0 auto;
-  padding: 56px 24px 96px;
+  --oe-top-pad: 56px;
+  padding: var(--oe-top-pad) 24px 96px;
   box-sizing: border-box;
   text-align: left;
   color: var(--ink);
@@ -29,6 +31,46 @@
 }
 
 /* ───────── 상단 ───────── */
+/* 메인으로 돌아가는 작은 링크: 로고와 같은 높이, 본문 왼쪽 끝에 맞춤 */
+.oe-top-back {
+  position: absolute;
+  top: calc(var(--oe-top-pad, 56px) + 4px);
+  left: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 6px 4px 0;
+  font-size: 13px;
+  color: var(--graphite);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.oe-top-back svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s;
+}
+
+.oe-top-back:hover {
+  color: var(--ink);
+}
+
+.oe-top-back:hover svg {
+  transform: translateX(-3px);
+}
+
+.oe-top-back:focus-visible {
+  outline: 2px solid var(--moon);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 .oe-hero {
   text-align: center;
   padding-bottom: 40px;
@@ -434,7 +476,7 @@
 
 @media (max-width: 480px) {
   .oe-page {
-    padding-top: 40px;
+    --oe-top-pad: 40px;
   }
 
   .oe-facts dd {
@@ -455,7 +497,7 @@
 @media (min-width: 1025px) {
   .oe-page {
     max-width: 680px;
-    padding-top: 72px;
+    --oe-top-pad: 72px;
   }
 
   .oe-title {
