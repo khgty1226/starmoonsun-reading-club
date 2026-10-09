@@ -44,8 +44,7 @@ const validate = (f) => {
     e.instagram = "영문, 숫자, 마침표(.), 밑줄(_)로 된 아이디를 입력해 주세요.";
   if (!/^01[016789]-\d{3,4}-\d{4}$/.test(f.phone))
     e.phone = "휴대폰 번호를 끝까지 입력해 주세요.";
-  if (f.area.trim().length < 2)
-    e.area = "사는 곳(동)을 입력해 주세요.";
+  if (f.area.trim().length < 2) e.area = "사는 곳(동)을 입력해 주세요.";
   if (!f.agree) e.agree = "개인정보 수집·이용에 동의해야 신청할 수 있어요.";
   return e;
 };
@@ -91,7 +90,8 @@ function OpenEvent() {
   }, []);
 
   const set = (key) => (e) => {
-    let value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    let value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
     if (key === "phone") value = formatPhone(value);
     if (key === "instagram") value = value.replace(/\s/g, "");
     if (key === "age") value = value.replace(/\D/g, "").slice(0, 2);
@@ -180,16 +180,26 @@ function OpenEvent() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {/* 페이지 왼쪽 위의 작은 '메인으로' 링크 */}
-            <a className="oe-top-back" href="/">
-              <svg viewBox="0 0 12 12" aria-hidden="true">
-                <path d="M7.5 2.5 4 6l3.5 3.5" />
+            {/* 페이지 왼쪽 위의 뒤로 가기 화살표. 평소엔 화살표만,
+                마우스를 올리면 '메인으로' 글씨가 옆에 나타남 */}
+            <a
+              className="oe-top-back"
+              href="/"
+              aria-label="메인으로"
+              title="메인으로"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15 5l-7 7 7 7" />
               </svg>
-              메인으로
+              <span className="oe-top-back-label">메인으로</span>
             </a>
 
             <header className="oe-hero">
-              <a href="/" className="oe-home" aria-label="별달해 독서클럽 홈으로">
+              <a
+                href="/"
+                className="oe-home"
+                aria-label="별달해 독서클럽 홈으로"
+              >
                 <Logo />
               </a>
               <p className="oe-kicker">별달해 독서클럽 오픈 이벤트</p>
@@ -199,7 +209,8 @@ function OpenEvent() {
               </h1>
               <p className="oe-lead">
                 지금 당신에게 꼭 필요한 책 한 권을 골라 포장해 선물합니다.
-                <br className="oe-pc-break" /> 어떤 책일지는 열어 보기 전까지 비밀이에요.
+                <br className="oe-pc-break" /> 어떤 책일지는 열어 보기 전까지
+                비밀이에요.
               </p>
 
               <dl className="oe-facts">
@@ -235,7 +246,9 @@ function OpenEvent() {
               </Field>
 
               <div className="oe-row">
-                <fieldset className={`oe-field ${errors.gender ? "has-error" : ""}`}>
+                <fieldset
+                  className={`oe-field ${errors.gender ? "has-error" : ""}`}
+                >
                   <legend className="oe-label">성별</legend>
                   <div className="oe-choice">
                     {[
@@ -278,7 +291,11 @@ function OpenEvent() {
                 </Field>
               </div>
 
-              <Field id="instagram" label="인스타그램 아이디" error={errors.instagram}>
+              <Field
+                id="instagram"
+                label="인스타그램 아이디"
+                error={errors.instagram}
+              >
                 <div className="oe-affix">
                   <span className="oe-prefix">@</span>
                   <input
@@ -340,13 +357,19 @@ function OpenEvent() {
                 <h3 id="privacy-title">개인정보 수집·이용 안내</h3>
                 <dl>
                   <dt>수집 항목</dt>
-                  <dd>이름, 성별, 나이, 인스타그램 아이디, 휴대폰 번호, 사는 곳(동)</dd>
+                  <dd>
+                    이름, 성별, 나이, 인스타그램 아이디, 휴대폰 번호, 사는
+                    곳(동)
+                  </dd>
                   <dt>이용 목적</dt>
-                  <dd>이벤트 참여 확인, 당첨자 추첨과 연락, 인터뷰 일정 조율, 도서 전달</dd>
+                  <dd>
+                    이벤트 참여 확인, 당첨자 추첨과 연락, 인터뷰 일정 조율, 도서
+                    전달
+                  </dd>
                   <dt>보유 기간</dt>
                   <dd>
-                    이벤트가 끝나면(당첨자 도서 전달 완료 후) 지체 없이 파기합니다.
-                    전자 파일과 메일은 복구할 수 없도록 삭제합니다.
+                    이벤트가 끝나면(당첨자 도서 전달 완료 후) 지체 없이
+                    파기합니다. 전자 파일과 메일은 복구할 수 없도록 삭제합니다.
                   </dd>
                 </dl>
                 <p>
