@@ -148,8 +148,14 @@ function App() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.9, ease: "easeInOut" }}
           >
+            {/* 첫 문장: PC·태블릿은 기존 문장, 휴대폰은 한 줄에 들어가는 짧은 인사 */}
             <p>
-              "별달해 독서클럽"은 대전에서 운영을 시작하는 독서모임입니다.
+              <span className="intro-wide">
+                "별달해 독서클럽"은 대전에서 운영을 시작하는 독서모임입니다.
+              </span>
+              <span className="intro-phone">
+                안녕하세요, "별달해 독서클럽" 입니다.
+              </span>
             </p>
             <p>
               경청과 존중을 바탕으로, 각자가 가진 사유와 이야기를 나눔으로,
