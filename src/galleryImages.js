@@ -11,18 +11,18 @@ import photo10 from "./assets/meet/meet_4_1.jpg";
 import photo11 from "./assets/meet/meet_4_2.jpg";
 import photo12 from "./assets/meet/meet_4_3.jpg";
 
-// 최근 모임 사진(10~12)을 맨 앞에
+// 최신순 (가장 최근에 추가한 사진이 맨 앞)
 export const galleryImages = [
-  photo10,
-  photo11,
   photo12,
-  photo1,
-  photo2,
-  photo3,
-  photo4,
-  photo5,
-  photo6,
-  photo7,
-  photo8,
+  photo11,
+  photo10,
   photo9,
+  photo8,
+  photo7,
+  photo6,
+  photo5,
+  photo4,
+  photo3,
+  photo2,
+  photo1,
 ];
