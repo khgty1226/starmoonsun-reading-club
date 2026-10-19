@@ -8,6 +8,7 @@ import "./OpenEvent.css";
 // VITE_FORM_MOCK=true 로 빌드하면 실제 전송 없이 완료 화면만 보여 줍니다(디자인 확인용).
 
 const EVENT_END = "10월 31일";
+const EVENT_POST_URL = "https://www.instagram.com/p/DeO_-YlD_UA/"; // 인스타그램 이벤트 게시물
 const MOCK = import.meta.env.VITE_FORM_MOCK === "true";
 
 const EMPTY = {
@@ -212,6 +213,73 @@ function OpenEvent() {
                 <br className="oe-pc-break" /> 어떤 책일지는 열어 보기 전까지
                 비밀이에요.
               </p>
+
+              {/* 인스타그램 이벤트 게시물로 가는 링크 (새 탭) */}
+              <a
+                className="oe-insta"
+                href={EVENT_POST_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <svg
+                  className="oe-insta-crayon"
+                  viewBox="0 0 140 40"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <filter
+                      id="oe-insta-crayon"
+                      filterUnits="userSpaceOnUse"
+                      x="-10"
+                      y="-10"
+                      width="160"
+                      height="60"
+                    >
+                      <feTurbulence
+                        type="fractalNoise"
+                        baseFrequency="0.8"
+                        numOctaves="2"
+                        seed="11"
+                        result="noise"
+                      />
+                      <feDisplacementMap
+                        in="SourceGraphic"
+                        in2="noise"
+                        scale="10"
+                        result="rough"
+                      />
+                      <feTurbulence
+                        type="fractalNoise"
+                        baseFrequency="1.4 0.5"
+                        numOctaves="1"
+                        seed="5"
+                        result="grain"
+                      />
+                      <feColorMatrix
+                        in="grain"
+                        type="matrix"
+                        values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.75"
+                        result="grainAlpha"
+                      />
+                      <feComposite in="rough" in2="grainAlpha" operator="in" />
+                    </filter>
+                  </defs>
+                  <path
+                    d="M 8 24 C 40 29, 92 17, 132 22"
+                    pathLength="1"
+                    filter="url(#oe-insta-crayon)"
+                  />
+                </svg>
+                <span className="oe-insta-text">이벤트 보러가기</span>
+                <svg
+                  className="oe-insta-arrow"
+                  viewBox="0 0 12 12"
+                  aria-hidden="true"
+                >
+                  <path d="M4 8 8 4M4.5 4H8v3.5" />
+                </svg>
+              </a>
 
               <dl className="oe-facts">
                 <div>

@@ -135,6 +135,87 @@
   color: #555;
 }
 
+/* 인스타그램 이벤트 게시물 링크: 고운바탕 굵은 글씨 + 노란 크레용 줄 (메인 이벤트 안내와 같은 장치) */
+.oe-insta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 22px;
+  padding: 2px 6px;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.oe-insta-crayon {
+  position: absolute;
+  left: -2px;
+  bottom: -2px;
+  width: calc(100% + 4px);
+  height: 70%;
+  overflow: visible;
+}
+
+/* 페이지가 열리면 왼쪽부터 한 번 칠해짐 */
+.oe-insta-crayon path {
+  fill: none;
+  stroke: var(--star);
+  stroke-width: 24;
+  stroke-linecap: round;
+  opacity: 0.8;
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
+  animation: oeInstaCrayon 1.1s ease-out 0.6s forwards;
+  transition: opacity 0.25s;
+}
+
+@keyframes oeInstaCrayon {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.oe-insta-text,
+.oe-insta-arrow {
+  position: relative;
+}
+
+.oe-insta-arrow {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.25s;
+}
+
+.oe-insta:hover .oe-insta-crayon path {
+  opacity: 1;
+}
+
+.oe-insta:hover .oe-insta-arrow {
+  transform: translate(2px, -2px);
+}
+
+.oe-insta:focus-visible {
+  outline: 2px solid var(--moon);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oe-insta-crayon path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
 .oe-facts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
