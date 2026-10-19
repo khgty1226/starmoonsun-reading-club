@@ -307,3 +307,17 @@
     font-size: 15px;
   }
 }
+
+/* 이벤트 안내를 조금 위로: 휴대폰 58vh → 56.2vh, 태블릿 58vh → 56vh
+   ('오픈 이벤트' 글씨 윗선이 화면 높이 약 51.5% 지점에 오도록) */
+@media (max-width: 599px) {
+  .invite-wrap {
+    top: 56.2vh;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) and (min-height: 600px) {
+  .invite-wrap {
+    top: 56vh;
+  }
+}
