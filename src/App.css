@@ -85,10 +85,10 @@ html {
   p {
     max-width: 560px;
     margin: 0 0 0.7em;
-    /* 손으로 쓴 듯한 나눔손글씨 펜: 로고의 손그림과 같은 결.
-       획이 가늘고 글자가 작게 보이는 서체라 기본 서체보다 크기를 키움 */
-    font-family: "Nanum Pen Script", cursive;
-    font-size: 22.5px; /* 25px의 90% */
+    /* 손글씨 서체: 교보 손글씨 2025 이유빈 (index.css에서 등록).
+       같은 px에서 글자가 크게 그려지는 서체라, 화면에 보이는 크기를 이전과 맞춰 px를 조정 */
+    font-family: "Kyobo Handwriting 2025 Yi Yubin", cursive;
+    font-size: 19px;
     color: #959595; /* 아래 "블라인드 북 신청하기"(#8a8a8a)와 인스타 아이디(#a0a0a0) 사이의 연한 회색 */
     line-height: 1.45;
     word-break: keep-all;
@@ -233,7 +233,7 @@ html {
 
   .introduce p {
     max-width: 600px;
-    font-size: 24.3px; /* 27px의 90% */
+    font-size: 20.5px;
   }
 
   .contact {
@@ -254,7 +254,7 @@ html {
 
 @media (max-width: 599px) {
   .introduce p {
-    font-size: 20.7px; /* 23px의 90% */
+    font-size: 17.5px;
   }
 
   .intro-wide {

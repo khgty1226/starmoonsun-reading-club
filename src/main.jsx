@@ -1,7 +1,5 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-// 소개 글 손글씨 서체 (사이트에 직접 포함해 외부 글꼴 서버 없이도 표시)
-import '@fontsource/nanum-pen-script/400.css'
 import './index.css'
 import App from './App.jsx'
 import OpenEvent from './OpenEvent.jsx'
