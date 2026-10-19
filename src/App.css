@@ -254,7 +254,7 @@ html {
 
 @media (max-width: 599px) {
   .introduce p {
-    font-size: 18.5px;
+    font-size: 18px;
   }
 
   .intro-wide {
@@ -267,19 +267,19 @@ html {
   }
 }
 
-/* ───────── 휴대폰·태블릿: 소개 글을 로고와 이벤트 안내 사이 정가운데에 ─────────
-   영역 위쪽 = 로고(Reading Club) 아래 끝 = 로고 중심 14vh + 로고 높이의 절반(로고 폭 × 0.2045)
-   영역 아래쪽 = 이벤트 안내 '오픈 이벤트' 글씨 윗선 (이벤트 안내 중심 58vh에서 위로 --invite-half 만큼) */
+/* ───────── 휴대폰·태블릿: 소개 글 첫 문장의 세로 가운데를 화면 높이 26% 지점에 ─────────
+   영역을 위에서부터 쌓고, 첫 문장 한 줄 높이(글씨 크기 × 줄 간격 1.45)의 절반만큼 위로 올려 맞춤 */
 @media (max-width: 1024px) {
   .introduce {
-    --invite-half: 39px;
-    top: calc(14vh + var(--logo-w) * 0.2045);
-    bottom: calc(42vh + var(--invite-half));
+    --intro-fs: 18px;
+    top: calc(26vh - var(--intro-fs) * 1.45 / 2);
+    bottom: auto;
+    justify-content: flex-start;
   }
 }
 
 @media (min-width: 600px) and (max-width: 1024px) and (min-height: 600px) {
   .introduce {
-    --invite-half: 47px;
+    --intro-fs: 21.5px;
   }
 }
