@@ -89,7 +89,7 @@ html {
        같은 px에서 글자가 크게 그려지는 서체라, 화면에 보이는 크기를 이전과 맞춰 px를 조정 */
     font-family: "Kyobo Handwriting 2025 Yi Yubin", cursive;
     font-size: 19px;
-    color: #959595; /* 아래 "블라인드 북 신청하기"(#8a8a8a)와 인스타 아이디(#a0a0a0) 사이의 연한 회색 */
+    color: #8c8c8c; /* 아래 "블라인드 북 신청하기"(#8a8a8a)와 비슷한 연한 회색 */
     line-height: 1.45;
     word-break: keep-all;
   }
@@ -233,7 +233,7 @@ html {
 
   .introduce p {
     max-width: 600px;
-    font-size: 20.5px;
+    font-size: 21.5px;
   }
 
   .contact {
@@ -254,7 +254,7 @@ html {
 
 @media (max-width: 599px) {
   .introduce p {
-    font-size: 17.5px;
+    font-size: 18.5px;
   }
 
   .intro-wide {
@@ -264,5 +264,22 @@ html {
   .intro-phone {
     display: inline;
     white-space: nowrap; /* 한 줄로 */
+  }
+}
+
+/* ───────── 휴대폰·태블릿: 소개 글을 로고와 이벤트 안내 사이 정가운데에 ─────────
+   영역 위쪽 = 로고(Reading Club) 아래 끝 = 로고 중심 14vh + 로고 높이의 절반(로고 폭 × 0.2045)
+   영역 아래쪽 = 이벤트 안내 '오픈 이벤트' 글씨 윗선 (이벤트 안내 중심 58vh에서 위로 --invite-half 만큼) */
+@media (max-width: 1024px) {
+  .introduce {
+    --invite-half: 39px;
+    top: calc(14vh + var(--logo-w) * 0.2045);
+    bottom: calc(42vh + var(--invite-half));
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) and (min-height: 600px) {
+  .introduce {
+    --invite-half: 47px;
   }
 }
