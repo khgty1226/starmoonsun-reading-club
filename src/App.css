@@ -89,7 +89,7 @@ html {
        획이 가늘고 글자가 작게 보이는 서체라 기본 서체보다 크기를 키움 */
     font-family: "Nanum Pen Script", cursive;
     font-size: 22.5px; /* 25px의 90% */
-    color: gray; /* 원래 소개 글과 같은 회색 */
+    color: #959595; /* 아래 "블라인드 북 신청하기"(#8a8a8a)와 인스타 아이디(#a0a0a0) 사이의 연한 회색 */
     line-height: 1.45;
     word-break: keep-all;
   }
