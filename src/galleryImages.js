@@ -7,6 +7,9 @@ import photo6 from "./assets/gallery/starmoonsun5.jpg";
 import photo7 from "./assets/meet/meet_1.jpg";
 import photo8 from "./assets/meet/meet_2_2.jpg";
 import photo9 from "./assets/meet/meet_3_2.jpg";
+import photo10 from "./assets/meet/meet_4_1.jpg";
+import photo11 from "./assets/meet/meet_4_2.jpg";
+import photo12 from "./assets/meet/meet_4_3.jpg";
 
 export const galleryImages = [
   photo1,
@@ -17,5 +20,8 @@ export const galleryImages = [
   photo6,
   photo7,
   photo8,
-  photo9
+  photo9,
+  photo10,
+  photo11,
+  photo12,
 ];
