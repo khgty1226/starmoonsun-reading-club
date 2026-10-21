@@ -88,7 +88,7 @@ html {
     /* 고운바탕: 신청서·이벤트 안내 제목과 같은 부드러운 명조 */
     font-family: "Gowun Batang", "Nanum Myeongjo", serif;
     font-size: 16px;
-    color: #8c8c8c; /* 아래 "블라인드 북 신청하기"(#8a8a8a)와 비슷한 연한 회색 */
+    color: #7a7a7a; /* 차분한 회색 (이전 #8c8c8c보다 살짝 진하게) */
     line-height: 1.7;
     word-break: keep-all;
   }
