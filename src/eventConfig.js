@@ -1,4 +1,5 @@
 // 오픈 이벤트 설정
-// 마감(10/31) 다음 날 0시(한국 시간)부터 메인 페이지의 이벤트 안내가 자동으로 사라집니다.
-export const EVENT_CLOSES_AT = new Date("2026-11-01T00:00:00+09:00");
-export const isEventOpen = () => Date.now() < EVENT_CLOSES_AT.getTime();
+// 메인 페이지 이벤트 안내 표시 여부. 날짜에 따른 자동 숨김은 끄고, 직접 켜고 끄도록 함.
+// 이벤트 안내를 내리고 싶을 때 SHOW_EVENT_INVITE를 false로 바꾸면 됩니다.
+export const SHOW_EVENT_INVITE = true;
+export const isEventOpen = () => SHOW_EVENT_INVITE;
