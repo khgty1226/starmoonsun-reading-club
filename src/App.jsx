@@ -5,6 +5,7 @@ import starmoonsun from "./assets/starmoonsun.png";
 // 자리 잡은 뒤의 로고: 별·달·해만 진한 그림, Reading Club 글씨는 원본 그대로
 import starmoonsun_full from "./assets/starmoonsun_full_deep.png";
 import Gallery from "./Gallery";
+import Members from "./Members";
 import EventInvite from "./EventInvite";
 import { isEventOpen } from "./eventConfig";
 import { galleryImages } from "./galleryImages";
@@ -223,6 +224,9 @@ function App() {
 
       {/* ───────── 2페이지 ───────── */}
       <Gallery images={galleryImages} />
+
+      {/* ───────── 3페이지: 우리의 서가 (가입 인사) ───────── */}
+      <Members />
     </>
   );
 }
